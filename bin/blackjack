@@ -1,0 +1,8 @@
+#!/usr/bin/env ruby
+
+require_relative '../lib/blackjack.rb'
+
+game = Blackjack.new
+game.greeting
+game.buy_in
+game.round
