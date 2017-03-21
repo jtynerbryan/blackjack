@@ -39,9 +39,9 @@ class Blackjack
         	puts  "Let the dealer draw additional cards until his or her hand exceeds 21."
         	puts "\nWould you like to play? y/n"
         	response = gets.strip
-        	if @response == "y"
+        	if response == "y"
         		puts "Great! Let's begin"
-        	elsif response ==	"n"
+        	elsif response == "n"
         		puts "Okay, maybe another time."
         		exit
         	else
