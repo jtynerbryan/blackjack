@@ -262,11 +262,3 @@ class Blackjack
 		end
 	end
 end
-
-
-
-
-
-
-
-
