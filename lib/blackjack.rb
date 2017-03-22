@@ -35,6 +35,7 @@ class Blackjack
 		puts "Welcome to Blackjack!"
 		puts  "\nThe objective of this game is to beat the dealer in one of the following ways:"
 		puts  "Get 21 points on the player's first two cards (called a 'blackjack' or 'natural'), without a dealer blackjack;"
+<<<<<<< HEAD
         puts  "Reach a final score higher than the dealer without exceeding 21; or"
         puts  "Let the dealer draw additional cards until his or her hand exceeds 21."
         puts "\nWould you like to play? y/n"
@@ -47,6 +48,20 @@ class Blackjack
         else
         	greeting
         end
+=======
+        	puts  "Reach a final score higher than the dealer without exceeding 21; or"
+        	puts  "Let the dealer draw additional cards until his or her hand exceeds 21."
+        	puts "\nWould you like to play? y/n"
+        	response = gets.strip
+        	if response == "y"
+        		puts "Great! Let's begin"
+        	elsif response == "n"
+        		puts "Okay, maybe another time."
+        		exit
+        	else
+        		greeting
+       	 	end
+>>>>>>> 7964f74198a8796e6101152c95f4ec7dbad3dcec
 	end
 
 	def build_deck
