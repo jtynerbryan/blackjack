@@ -38,10 +38,10 @@ class Blackjack
         puts  "Reach a final score higher than the dealer without exceeding 21; or"
         puts  "Let the dealer draw additional cards until his or her hand exceeds 21."
         puts "\nWould you like to play? y/n"
-        @response = gets.strip
-        if @response == "y"
+        response = gets.strip
+        if response == "y"
         	puts "Great! Let's begin"
-        elsif @response ==	"n"
+        elsif response ==	"n"
         	puts "Okay, maybe another time."
         	exit
         else
@@ -74,7 +74,7 @@ class Blackjack
 	end
 
 	def bet
-		puts "How much would you like to bet this round? You have #{@chips} remaining."
+		puts "How much would you like to bet this round? You have #{@chips} chips remaining."
 		@bet = gets.to_i
 		if @bet > @chips
 			puts "You don't have that many chips remaining, please bet a lower amount."
@@ -104,7 +104,7 @@ class Blackjack
 
 	def natural_twenty_one?
 		if @dealer_hand[0].numeric_value + @dealer_hand[1].numeric_value == 21 && @user_hand[0].numeric_value + @user_hand[1].numeric_value == 21
-			puts "You and the dealer both have a natural 21\nPushing #{@pot} chips back to you..."
+			puts "You and the dealer both have a natural 21.\nPushing #{@pot} chips back to you..."
 			@chips += @pot
 			round
 		elsif @dealer_hand[0].numeric_value + @dealer_hand[1].numeric_value == 21 && @user_hand[0].numeric_value + @user_hand[1].numeric_value != 21
@@ -190,10 +190,10 @@ class Blackjack
 	end
 
 	def dealer_play
-		if @dealer_hand.inject(0){|sum,e| sum + e.numeric_value} >= 17
+		if @dealer_hand.inject(0){|sum,e| sum + e.numeric_value} >= 17 && @dealer_hand.inject(0){|sum,e| sum + e.numeric_value} < 21
 			compare_hands
 		else
-			until @dealer_hand.inject(0){|sum,e| sum + e.numeric_value} >= 17 || @dealer_hand.inject(0){|sum,e| sum + e.alternate_value} >=  17
+			until @dealer_hand.inject(0){|sum,e| sum + e.numeric_value} >= 17 && @dealer_hand.inject(0){|sum,e| sum + e.alternate_value} >=  17
 				@dealer_hand.push(@deck.shift)
 				puts "The dealer draws #{@dealer_hand.last.face_value} of #{@dealer_hand.last.suit}..."
 				dealer_bust?
@@ -205,10 +205,10 @@ class Blackjack
 	def best_hand
 		if @user_hand.inject(0){|sum,e| sum + e.numeric_value} > 21
 			@best_hand = @user_hand.inject(0){|sum,e| sum + e.alternate_value}
-			puts "You have #{@best_hand}"
+			puts "You have #{@best_hand}."
 		elsif @user_hand.inject(0){|sum,e| sum + e.numeric_value} >= @user_hand.inject(0){|sum,e| sum + e.alternate_value}
 			@best_hand = @user_hand.inject(0){|sum,e| sum + e.numeric_value}
-			puts "You have #{@best_hand}"
+			puts "You have #{@best_hand}."
 		end
 	end
 
